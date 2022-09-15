@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 /**
  * Программа по кодированию/декодированию данных. На вход получает адрес файла. Файл для кодирования может
@@ -15,15 +14,29 @@ import java.util.Scanner;
  * Все необходимые параметры берём из args
  * На выходе должен быть готовый jar файл, который можно использовать из командной строки
  *
- * C:\Users\Zar\IdeaProjects\FileCoder\Tests\stdCoder.txt
- * C:\Users\Zar\IdeaProjects\FileCoder\Tests\stdDeCoder.txt
+ * C:\Users\Zar\IdeaProjects\FileEncoderApp\Tests\stdCoder.txt
+ * C:\Users\Zar\IdeaProjects\FileEncoderApp\Tests\stdDeCoder.txt
  */
-public class FileCoder {
+
+
+public class FileEncoderApp {
+
     public static void main(String[] args) {
-        if (args.length > 0)
-        {
+        Coder coder = new Coder();
+        Decoder decoder= new Decoder();
+        FileWork fileWork = new FileWork();
+        ArgsWorking argsWork = new ArgsWorking();
+        Debug debug = new Debug();
 
-        }
+        if (args.length == 0)
+            System.out.println("need add Args to work");
+        else
+         argsWork.workingWithArguments(args);
 
-    }
-}
+
+
+
+
+    }//main
+
+}//class
