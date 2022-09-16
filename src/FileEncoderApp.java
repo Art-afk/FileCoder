@@ -21,7 +21,7 @@
 
 public class FileEncoderApp {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Coder coder = new Coder();
         Decoder decoder= new Decoder();
         FileWork fileWork = new FileWork();

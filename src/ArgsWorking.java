@@ -4,7 +4,7 @@ Decoder decoder = new Decoder();
 Debug debug = new Debug();
 
 
-    public void workingWithArguments(String[] args){
+    public void workingWithArguments(String[] args) throws Exception {
         for (int i =0; i<= args.length-1;i++) {
             //System.out.println(args[i]);
             switch (args[i]) {
@@ -12,6 +12,7 @@ Debug debug = new Debug();
                     coder.path = args[i+1];
                     coder.pathToOut = args[i+2];
                     if(debug.ON)System.out.println("*DEBUG* " + " first key: " + args[i] +" path: "+ args[i+1] + " out: " + args[i+2]);
+                    coder.start();
                     break;
                 case "-decoder":
                     decoder.path = args[i+1];
