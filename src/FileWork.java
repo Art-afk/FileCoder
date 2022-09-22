@@ -20,6 +20,12 @@ public class FileWork {
         }
     }
 
+    /**
+     *
+     * @param path to file to be read
+     * @return array read line by line reading
+     * @throws Exception
+     */
     public ArrayList<String> readFromFile(String path) throws Exception{
         ArrayList<String> listOfLines = new ArrayList<>();
         String line = "";
