@@ -32,7 +32,7 @@ FileWork fileWork = new FileWork();
                     ArrayList<String> coderList = new ArrayList<>();
                     coder.path = args[i+1];
                     coder.pathToOut = args[i+2];
-                    if(debug.ON)debug.out("*DEBUG* " + " first key: " + args[i] +" path: "+ args[i+1] + " out: " + args[i+2]);
+                    if(debug.ON)debug.out( " first key: " + args[i] +" path: "+ args[i+1] + " out: " + args[i+2]);
                    coderList = coder.start();
                     fileWork.writeToFile(args[i+2],false,""); //clear file
                     for (String key: coderList
@@ -43,7 +43,7 @@ FileWork fileWork = new FileWork();
                     break;
                 case "-decoder":
                     ArrayList<String> deCoderList = new ArrayList<>();
-                    if(debug.ON)debug.out("*DEBUG* " + " first key: " + args[i] +" path: "+ args[i+1] + " out: " + args[i+2]);
+                    if(debug.ON)debug.out(" first key: " + args[i] +" path: "+ args[i+1] + " out: " + args[i+2]);
                     deCoderList = decoder.start(args[i+1]);
                     fileWork.writeToFile(args[i+2],false, "");
                     for (String key: deCoderList

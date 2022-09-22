@@ -9,6 +9,6 @@ public class Debug {
      * @param text sout debug test to console
      */
     public void out(String text){
-        System.out.println(text);
+        System.out.println( "*DEBUG* " + text);
     }
 }

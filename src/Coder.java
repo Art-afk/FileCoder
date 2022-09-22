@@ -15,7 +15,7 @@ public class Coder {
     public ArrayList<String> start() throws Exception {
         ArrayList<String> listLine = fileWork.readFromFile(path);
         ArrayList<String> encryptedStringList = new ArrayList<>();
-        if (debug.ON) System.out.println("*DEBUG* Coder get path: " + listLine);
+        if (debug.ON) System.out.println("Coder get path: " + listLine);
         for (int i = 0; i <= listLine.size() - 1; i++) {
             char[] word = new char[listLine.size()];
             String assembledString = "";
