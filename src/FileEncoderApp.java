@@ -27,9 +27,6 @@ public class FileEncoderApp {
 
         if (args.length == 0)
             System.out.println("need add Args to work");
-        else if (args.length < 3) {
-            System.out.println("need add out file");
-        }
         else argsWork.workingWithArguments(args);
 
     }//main

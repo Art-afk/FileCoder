@@ -15,7 +15,10 @@ FileWork fileWork = new FileWork();
                 case "-help":
                     System.out.println("Specifies that you want to Encode or Decode: \n" +
                             "Example:\n" +
-                            "./encoderApp -debug -coder");
+                            "./encoderApp -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt \n" +
+                            "./encoderApp -decode ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoderOUT.txt \n" +
+                            "You can Debug enable: \n" +
+                            "./encoderApp -debug -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt");
                     break;
                 case "-debug":
                     debug.ON =true;
