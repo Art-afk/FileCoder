@@ -6,11 +6,16 @@ Decoder decoder = new Decoder();
 Debug debug = new Debug();
 FileWork fileWork = new FileWork();
 
-
+    /**
+     *
+     * @param args work withs program args -help, -debug, -coder, -decoder
+     * @throws Exception
+     */
     public void workingWithArguments(String[] args) throws Exception {
 
         for (int i =0; i<= args.length-1;i++) {
-            //System.out.println(args[i]);
+
+
             switch (args[i]) {
                 case "-help":
                     System.out.println("Specifies that you want to Encode or Decode: \n" +

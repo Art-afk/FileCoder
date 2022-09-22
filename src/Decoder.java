@@ -2,10 +2,14 @@ import java.util.ArrayList;
 
 public class Decoder {
       FileWork fileWork = new FileWork();
+
+    /**
+     *
+     * @param path to the file to be decoded
+     * @return decoded string array String
+     * @throws Exception
+     */
     public ArrayList<String> start(String path) throws Exception {
-        //3a2sear3sr2ma
-        //aaassearsssrmm
-        //aaassearsssrmm
       final ArrayList<String> listLineFromFile = fileWork.readFromFile(path);
         ArrayList<String> decryptedStringList = new ArrayList<>();
         for (int i = 0; i<= listLineFromFile.size() -1; i++){
@@ -23,6 +27,4 @@ public class Decoder {
         }//for listline
         return decryptedStringList;
     }//start
-
-
 }//decoder
