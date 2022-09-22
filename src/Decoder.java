@@ -21,7 +21,6 @@ public class Decoder {
             }//for word
             decryptedStringList.add(decryptedString + "\n");
         }//for listline
-        System.out.println(decryptedStringList);
         return decryptedStringList;
     }//start
 

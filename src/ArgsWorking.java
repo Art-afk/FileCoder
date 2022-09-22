@@ -12,11 +12,19 @@ FileWork fileWork = new FileWork();
         for (int i =0; i<= args.length-1;i++) {
             //System.out.println(args[i]);
             switch (args[i]) {
+                case "-help":
+                    System.out.println("Specifies that you want to Encode or Decode: \n" +
+                            "Example:\n" +
+                            "./encoderApp -debug -coder");
+                    break;
+                case "-debug":
+                    debug.ON =true;
+                    break;
                 case "-coder":
                     ArrayList<String> coderList = new ArrayList<>();
                     coder.path = args[i+1];
                     coder.pathToOut = args[i+2];
-                    if(debug.ON)System.out.println("*DEBUG* " + " first key: " + args[i] +" path: "+ args[i+1] + " out: " + args[i+2]);
+                    if(debug.ON)debug.out("*DEBUG* " + " first key: " + args[i] +" path: "+ args[i+1] + " out: " + args[i+2]);
                    coderList = coder.start();
                     fileWork.writeToFile(args[i+2],false,""); //clear file
                     for (String key: coderList
@@ -26,7 +34,7 @@ FileWork fileWork = new FileWork();
                     break;
                 case "-decoder":
                     ArrayList<String> deCoderList = new ArrayList<>();
-                    if(debug.ON)System.out.println("*DEBUG* " + " first key: " + args[i] +" path: "+ args[i+1] + " out: " + args[i+2]);
+                    if(debug.ON)debug.out("*DEBUG* " + " first key: " + args[i] +" path: "+ args[i+1] + " out: " + args[i+2]);
                     deCoderList = decoder.start(args[i+1]);
                     fileWork.writeToFile(args[i+2],false, "");
                     for (String key: deCoderList
@@ -35,6 +43,9 @@ FileWork fileWork = new FileWork();
                     }
 
                     break;
+
+                default:
+                    System.out.println("need corrects args");
             }
         }
     }
