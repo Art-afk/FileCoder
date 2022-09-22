@@ -30,6 +30,9 @@ public class Coder {
                         countRep = 1;
                     } else assembledString = assembledString + String.valueOf(word[v]);
                 } else {
+                    if (countRep == 1)
+                        assembledString = assembledString + String.valueOf(word[v]);
+                    else
                     assembledString = assembledString + countRep + String.valueOf(word[v]);
                 }
             }

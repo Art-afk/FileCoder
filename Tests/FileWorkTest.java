@@ -13,7 +13,7 @@ public class FileWorkTest {
     @Test
     public void readFromFile()throws Exception {
         ArrayList<String> listOfLines = new ArrayList<>();
-        listOfLines = FileWork.readFromFile("c:\\Users\\Zar\\IdeaProjects\\FileEncoderApp\\Tests\\stdCoder.txt");
+    //    listOfLines = FileWork.readFromFile("c:\\Users\\Zar\\IdeaProjects\\FileEncoderApp\\Tests\\stdCoder.txt");
         for (String list: listOfLines
              ) {
             System.out.println(list);

@@ -34,6 +34,7 @@ FileWork fileWork = new FileWork();
                          ) {
                         fileWork.writeToFile(args[i+2],true,key);
                     }
+                    System.out.println("Finish");
                     break;
                 case "-decoder":
                     ArrayList<String> deCoderList = new ArrayList<>();
@@ -44,11 +45,9 @@ FileWork fileWork = new FileWork();
                          ) {
                         fileWork.writeToFile(args[i+2],true, key);
                     }
-
+                    System.out.println("Finish");
                     break;
 
-                default:
-                    System.out.println("need corrects args");
             }
         }
     }
