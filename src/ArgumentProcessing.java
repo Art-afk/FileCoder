@@ -14,12 +14,12 @@ public class ArgumentProcessing {
         for (int i = 0; i <= args.length - 1; i++) {
             switch (args[i]) {
                 case "-help":
-                    System.out.println("Specifies that you want to Encode or Decode: \n"
-                            + "Example:\n"
-                            + "./encoderApp -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt \n"
-                            + "./encoderApp -decode ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoderOUT.txt \n"
-                            + "You can Debug enable: \n"
-                            + "./encoderApp -debug -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt");
+                    System.out.println("Specifies that you want to Encode or Decode: \n" +
+                            "Example:\n" +
+                            "./encoderApp -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt \n" +
+                            "./encoderApp -decode ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoderOUT.txt \n" +
+                            "You can Debug enable: \n" +
+                            "./encoderApp -debug -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt");
                     break;
                 case "-debug":
                     debug.ON = true;
@@ -40,7 +40,7 @@ public class ArgumentProcessing {
                 case "-decoder":
                     ArrayList<String> deCoderList = new ArrayList<>();
                     if (debug.ON)
-                        debug.out(" first key: " + args[i] + " path: " + args[i + 1] + " out: " + args[i + 2]);
+                        debug.out("App start with key decoding" + " first key: " + args[i] + " path: " + args[i + 1] + " out: " + args[i + 2]);
                     deCoderList = decoder.start(args[i + 1]);
                     fileWork.writeToFile(args[i + 2], false, "");
                     for (String key : deCoderList) {

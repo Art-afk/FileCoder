@@ -11,16 +11,16 @@ public class Decoder {
     public ArrayList<String> start(String path) throws Exception {
         final ArrayList<String> listLineFromFile = fileWork.readFromFile(path);
         ArrayList<String> decryptedStringList = new ArrayList<>();
-        for (String line : listLineFromFile) {
+        for (String line : listLineFromFile) { // read line by line
             String decryptedString = "";
-            for (char letter : line.toCharArray()) {
+            char firstLetter = '\0';
+            for (char letter : line.toCharArray()) { //convert line to char
                 if (Character.isDigit(letter)) {
-                    for (int b = 1; b <= Character.getNumericValue(letter) - 1; b++) {
-                        decryptedString = decryptedString + listLineFromFile.get(i).charAt(key + 1);
-                    }
+                    decryptedString = decryptedString + Character.toString(firstLetter).repeat(Character.getNumericValue(letter) - 1);
                 } else {
-                    decryptedString = decryptedString + listLineFromFile.get(i).charAt(key);
+                    decryptedString = decryptedString + letter;
                 }
+                firstLetter = letter;
             }//for word
             decryptedStringList.add(decryptedString + "\n");
         }//for listline
