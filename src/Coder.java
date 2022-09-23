@@ -7,7 +7,6 @@ public class Coder {
     FileWork fileWork = new FileWork();
 
     /**
-     *
      * @return Encrypted String List Array
      * @throws Exception
      */
@@ -15,25 +14,23 @@ public class Coder {
     public ArrayList<String> start() throws Exception {
         ArrayList<String> listLine = fileWork.readFromFile(path);
         ArrayList<String> encryptedStringList = new ArrayList<>();
-        if (debug.ON) System.out.println("Coder get path: " + listLine);
-        for (int i = 0; i <= listLine.size() - 1; i++) {
-            char[] word = new char[listLine.size()];
+        if (debug.ON) debug.out("Coder get path: " + listLine);
+        for (String key : listLine) {
+            char[] word;
             String assembledString = "";
-            word = listLine.get(i).toCharArray();
-            int countRep = 1; // я бы на самом деле взял бы тут цифру 0 и прибавлял везде 2 а не 1, но что-то пошло не так)
-            for (int v = 0; v <= word.length - 1; v++) {
-                if (v < (word.length - 1)) {
-                    if ((word[v] == word[v + 1])) {
-                        countRep++;
-                    } else if (countRep > 1) {
-                        assembledString = assembledString + countRep + String.valueOf(word[v]);
-                        countRep = 1;
-                    } else assembledString = assembledString + String.valueOf(word[v]);
+            word = key.toCharArray();
+            int countRep = 1;
+            char previousLetter = '\0';
+            for (char letter : word) {
+                if (previousLetter == letter) {
+                    countRep++;
                 } else {
-                    if (countRep == 1)
-                        assembledString = assembledString + String.valueOf(word[v]);
-                    else
-                    assembledString = assembledString + countRep + String.valueOf(word[v]);
+                    if (countRep == 1) assembledString = assembledString + letter;
+                    else {
+                        assembledString = assembledString + countRep + letter;
+                        countRep = 1;
+                    }
+                    previousLetter = letter;
                 }
             }
             encryptedStringList.add(assembledString + "\n");
