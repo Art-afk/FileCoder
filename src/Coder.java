@@ -1,20 +1,18 @@
 import java.util.ArrayList;
 
 public class Coder {
-    public String path;
-    public String pathToOut;
-    Debug debug = new Debug();
-    FileWork fileWork = new FileWork();
-
     /**
      * @return Encrypted String List Array
      * @throws Exception
      */
-
-    public ArrayList<String> start() throws Exception {
-        ArrayList<String> listLine = fileWork.readFromFile(path);
+private Debug debug;
+    public ArrayList<String> start(ArrayList<String> listLine) throws Exception {
+       //
         ArrayList<String> encryptedStringList = new ArrayList<>();
-        if (debug.ON) debug.out("Coder get path: " + listLine);
+
+
+
+         debug.out("Coder get path: " + listLine);
         for (String key : listLine) {
             char[] word;
             String assembledString = "";

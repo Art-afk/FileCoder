@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * ��������� �� �����������/������������� ������. �� ���� �������� ����� �����. ���� ��� ����������� �����
  * ��������� ������������������ �������� a-z (������ �������). ���� ��� �������������
@@ -17,10 +19,22 @@
  * C:\Users\Zar\IdeaProjects\FileEncoderApp\Tests\stdDeCoder.txt
  */
 
+
 public class FileEncoderApp {
+
+
     public static void main(String[] args) throws Exception {
-        ArgumentProcessing argsProcessing = new ArgumentProcessing();
-        if (args.length != 0) argsProcessing.workingWithArguments(args);
-        else System.out.println("need add Args to work");
+
+        ConfigBuilder configBuilder = new ConfigBuilder();
+        if (args.length != 0) {
+            configBuilder.build(args);
+            LogicProcessor logic = new LogicProcessor();
+            System.out.println(logic.Start());
+        } else {
+            System.out.println("Need Args to work");
+            System.exit(1);
+        }
+
+
     }//main
 }//class
