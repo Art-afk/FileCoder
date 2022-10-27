@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class LogicProcessorApp {
     Debug debug;
     Config config;
@@ -17,23 +15,20 @@ public class LogicProcessorApp {
         switch (config.getWorkMod()) {
             case CODER:
                 debug.out("Start CODER section");
-                ArrayList<String> coderList = fileProcessor.readFromFile(config.getInputPath());
-                ArrayList<String> StringCoded = stringEncoder.coder(coderList);
+                String coderList = fileProcessor.readFromFile(config.getInputPath());
+                String StringCoded = stringEncoder.coder(coderList);
                 debug.out("Get encode text: " + StringCoded);
                 fileProcessor.ifTheFileIsNotCreatedWeCreateItIfExistsWeClearIt(config.getOutputPath());
-                for (String coderText : StringCoded) {
-                    fileProcessor.writeToFile(config.getOutputPath(), true, coderText);
-                }
+                fileProcessor.writeToFile(config.getOutputPath(), true, StringCoded);
+
                 break;
             case DECODER:
                 debug.out("Start DECODER section");
-                ArrayList<String> deCoderList = fileProcessor.readFromFile(config.getInputPath());
-                ArrayList<String> stringDecoded = stringEncoder.decoder(deCoderList);
+                String deCoderList = fileProcessor.readFromFile(config.getInputPath());
+                String stringDecoded = stringEncoder.decoder(deCoderList);
                 debug.out("Get Decode text: " + stringDecoded);
                 fileProcessor.ifTheFileIsNotCreatedWeCreateItIfExistsWeClearIt(config.getOutputPath());
-                for (String decoderText : stringDecoded) {
-                    fileProcessor.writeToFile(config.getOutputPath(), true, decoderText);
-                }
+                fileProcessor.writeToFile(config.getOutputPath(), true, stringDecoded);
                 break;
             case HELP:
                 System.out.println("Specifies that you want to Encode or Decode: \n" + "Example:\n" + "./encoderApp -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt \n" + "./encoderApp -decode ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoderOUT.txt \n" + "You can Debug enable: \n" + "./encoderApp -debug -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt");

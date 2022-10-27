@@ -1,12 +1,12 @@
 public class Config {
     private final DebugMode debugMode;
     private final String inputPath;
-    private final WorkMod workMod;
+    private final WorkMode workMode;
     private final String outputPath;
 
-    public Config(DebugMode debugMode, WorkMod workMod, String inputPath, String outputPath) {
+    public Config(DebugMode debugMode, WorkMode workMode, String inputPath, String outputPath) {
         this.debugMode = debugMode;
-        this.workMod = workMod;
+        this.workMode = workMode;
         this.inputPath = inputPath;
         this.outputPath = outputPath;
 
@@ -27,7 +27,7 @@ public class Config {
         return outputPath;
     }
 
-    public WorkMod getWorkMod() {
-        return workMod;
+    public WorkMode getWorkMod() {
+        return workMode;
     }
 }

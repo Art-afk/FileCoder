@@ -1,3 +1,3 @@
-public enum WorkMod {
+public enum WorkMode {
     CODER, DECODER, HELP
 }

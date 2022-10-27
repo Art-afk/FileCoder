@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class StringEncoder {
     private final Debug debug;
 
@@ -10,55 +8,50 @@ public class StringEncoder {
     /**
      * @return Encrypted String List Array
      */
-    public ArrayList<String> coder(ArrayList<String> listLine) {
-        //
-        ArrayList<String> encryptedStringList = new ArrayList<>();
-
+    public String coder(String listLine) {
+        String encryptedString = "";
         debug.out("Coder get text to coding: " + listLine);
-        for (String key : listLine) {
-            char[] word;
-            String assembledString = "";
-            word = key.toCharArray();
-            int countRep = 1;
-            char previousLetter = '\0';
-            for (char letter : word) {
-                if (previousLetter == letter) {
-                    countRep++;
-                } else {
-                    if (countRep == 1) assembledString += letter;
-                    else {
-                        assembledString += countRep + letter;
-                        countRep = 1;
-                    }
-                    previousLetter = letter;
+        char[] listLineChars = listLine.toCharArray();
+        String assembledString = "";
+        int countRep = 1;
+        char previousLetter = '\0';
+        for (char letter : listLineChars) {
+            if (previousLetter == letter) {
+                countRep++;
+            } else {
+                if (countRep == 1) assembledString += letter;
+                else {
+                    assembledString += countRep + Character.toString(letter);
+                    countRep = 1;
                 }
+                previousLetter = letter;
             }
-            encryptedStringList.add(assembledString + "\n");
         }
-        return encryptedStringList;
+        encryptedString = encryptedString + assembledString;
+
+        return encryptedString;
     }//coder
 
     /**
-     * @param listLineFromFile encode text for decoding
+     * @param stringFromFile encode text for decoding
      * @return decoded string array String
      */
-    public ArrayList<String> decoder(ArrayList<String> listLineFromFile) {
-        debug.out("Decoder get text to decoding: " + listLineFromFile);
-        ArrayList<String> decryptedStringList = new ArrayList<>();
-        for (String line : listLineFromFile) { // read line by line
-            String decryptedString = "";
-            char firstLetter = '\0';
-            for (char letter : line.toCharArray()) { //convert line to char
-                if (Character.isDigit(letter)) {
-                    decryptedString = decryptedString + Character.toString(firstLetter).repeat(Character.getNumericValue(letter) - 1);
-                } else {
-                    decryptedString = decryptedString + letter;
-                }
-                firstLetter = letter;
-            }//for word
-            decryptedStringList.add(decryptedString + "\n");
-        }//for listline
-        return decryptedStringList;
+    public String decoder(String stringFromFile) {
+        debug.out("Decoder get text to decoding: " + stringFromFile);
+        String decryptedStringFinish = "";
+        String line = stringFromFile;
+        String decryptedString = "";
+        char firstLetter = '\0';
+        for (char letter : line.toCharArray()) { //convert line to char
+            if (Character.isDigit(letter)) {
+                decryptedString = decryptedString + Character.toString(firstLetter).repeat(Character.getNumericValue(letter) - 1);
+            } else {
+                decryptedString = decryptedString + letter;
+            }
+            firstLetter = letter;
+        }//for word
+        decryptedStringFinish = decryptedStringFinish + decryptedString;
+        return decryptedStringFinish;
     }//start
 
 }//StringEncoder

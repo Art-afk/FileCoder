@@ -15,8 +15,9 @@
  * <p>
  * C:\Users\Zar\IdeaProjects\FileEncoderApp\Tests\stdCoder.txt
  * C:\Users\Zar\IdeaProjects\FileEncoderApp\Tests\stdDeCoder.txt
- *
+ * <p>
  * -debug -decoder //Users//zar//IdeaProjects//FileCoder//Tests//stdCoderOUT.txt //Users//zar//IdeaProjects//FileCoder//Tests//stdDeCoderOUT.txt
+ * -debug -coder //Users//zar//IdeaProjects//FileCoder//Tests//stdCoder.txt //Users//zar//IdeaProjects//FileCoder//Tests//stdCoderOUT.txt
  */
 
 public class FileEncoderStarter {

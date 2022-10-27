@@ -7,11 +7,11 @@ public class ConfigBuilder {
         String outputPath = null;
         String inputPath = null;
         DebugMode debugMod = DebugMode.DISABLE;
-        WorkMod workMod = null;
+        WorkMode workMode = null;
         for (int i = 0; i <= args.length - 1; i++) {
             switch (args[i]) {
                 case "-help":
-                    workMod = WorkMod.HELP;
+                    workMode = WorkMode.HELP;
                     break;
                 case "-debug":
                     debugMod = DebugMode.ENABLE;
@@ -19,18 +19,18 @@ public class ConfigBuilder {
                 case "-coder":
                     inputPath = args[i + 1];
                     outputPath = args[i + 2];
-                    workMod = WorkMod.CODER;
+                    workMode = WorkMode.CODER;
                     break;
                 case "-decoder":
                     inputPath = args[i + 1];
                     outputPath = args[i + 2];
-                    workMod = WorkMod.DECODER;
+                    workMode = WorkMode.DECODER;
                     break;
                 default:
                     System.out.println("something wrong");
             }
         }
-        Config config = new Config(debugMod, workMod, inputPath, outputPath);
+        Config config = new Config(debugMod, workMode, inputPath, outputPath);
         return config;
     }
 }

@@ -1,7 +1,6 @@
 import javax.imageio.IIOException;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 
 public class FileProcessor {
     /**
@@ -23,12 +22,12 @@ public class FileProcessor {
      * @return array read line by line reading
      * @throws Exception return error if can't read from file
      */
-    public ArrayList<String> readFromFile(String inputPath) throws Exception {
-        ArrayList<String> listOfLines = new ArrayList<>();
+    public String readFromFile(String inputPath) throws Exception {
+        String listOfLines = "";
         try (FileInputStream fis = new FileInputStream(inputPath); InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr)) {
             String line = reader.readLine();
             while (line != null) {
-                listOfLines.add(line);
+                listOfLines = listOfLines + line + "\n";
                 line = reader.readLine();
             }
         } catch (FileNotFoundException e) {
