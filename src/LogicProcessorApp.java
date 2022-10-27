@@ -11,25 +11,26 @@ public class LogicProcessorApp {
     }
 
     public void start() throws Exception {
+        StringEncoder stringEncoder = new StringEncoder(config);
         FileProcessor fileProcessor = new FileProcessor();
         debug.out("Work mod before start: " + config.getWorkMod().toString() + " Debug Mod: " + config.getDebugMode() + " InputPath: " + config.getInputPath() + " PathToOut: " + config.getOutputPath());
         switch (config.getWorkMod()) {
             case CODER:
                 debug.out("Start CODER section");
-                Coder coder = new Coder(config);
                 ArrayList<String> coderList = fileProcessor.readFromFile(config.getInputPath());
-                ArrayList<String> StringCoded = coder.start(coderList);
+                ArrayList<String> StringCoded = stringEncoder.coder(coderList);
                 debug.out("Get encode text: " + StringCoded);
+                fileProcessor.ifTheFileIsNotCreatedWeCreateItIfExistsWeClearIt(config.getOutputPath());
                 for (String coderText : StringCoded) {
                     fileProcessor.writeToFile(config.getOutputPath(), true, coderText);
                 }
                 break;
             case DECODER:
                 debug.out("Start DECODER section");
-                Decoder decoder = new Decoder(config);
                 ArrayList<String> deCoderList = fileProcessor.readFromFile(config.getInputPath());
-                ArrayList<String> stringDecoded = decoder.start(deCoderList);
+                ArrayList<String> stringDecoded = stringEncoder.decoder(deCoderList);
                 debug.out("Get Decode text: " + stringDecoded);
+                fileProcessor.ifTheFileIsNotCreatedWeCreateItIfExistsWeClearIt(config.getOutputPath());
                 for (String decoderText : stringDecoded) {
                     fileProcessor.writeToFile(config.getOutputPath(), true, decoderText);
                 }

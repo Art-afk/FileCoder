@@ -1,11 +1,9 @@
-import java.util.ArrayList;
-
 public class ConfigBuilder {
 
     public ConfigBuilder() {
     }
 
-    public Config build(String[] args) throws Exception {
+    public Config build(String[] args) {
         String outputPath = null;
         String inputPath = null;
         DebugMode debugMod = DebugMode.DISABLE;
