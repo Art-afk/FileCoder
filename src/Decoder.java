@@ -1,15 +1,21 @@
 import java.util.ArrayList;
 
 public class Decoder {
-    FileWork fileWork = new FileWork();
+    Debug debug;
+    Config config;
+
+    public Decoder(Config config) {
+        this.config = config;
+        this.debug = new Debug(config.getDebugMode());
+    }
 
     /**
-     * @param path to the file to be decoded
+     * @param listLineFromFile encode text for decoding
      * @return decoded string array String
      * @throws Exception
      */
-    public ArrayList<String> start(String path) throws Exception {
-        final ArrayList<String> listLineFromFile = fileWork.readFromFile(path);
+    public ArrayList<String> Start(ArrayList<String> listLineFromFile) throws Exception {
+        debug.out("Decoder get text to decoding: " + listLineFromFile);
         ArrayList<String> decryptedStringList = new ArrayList<>();
         for (String line : listLineFromFile) { // read line by line
             String decryptedString = "";

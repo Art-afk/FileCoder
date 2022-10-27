@@ -27,11 +27,11 @@ public class FileEncoderApp {
 
         ConfigBuilder configBuilder = new ConfigBuilder();
         if (args.length != 0) {
-            configBuilder.build(args);
-            LogicProcessor logic = new LogicProcessor();
+            Config config = configBuilder.build(args);
+            LogicProcessor logic = new LogicProcessor(config);
             System.out.println(logic.Start());
         } else {
-            System.out.println("Need Args to work");
+            System.out.println("*Error* Need Args to work");
             System.exit(1);
         }
 

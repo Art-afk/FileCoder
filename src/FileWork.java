@@ -6,28 +6,25 @@ import java.util.ArrayList;
 public class FileWork {
     Debug debug;
     Config config;
-    public FileWork() {
+
+    public FileWork(Config config) {
+        this.config = config;
+        this.debug = new Debug(config.getDebugMode());
     }
 
-    public FileWork(Debug debug) {
-        this.debug = debug;
-
-    }
 
     /**
-     * @param path    to file
-     * @param rewrite false\true to write or rewrite file
-     * @param text    text
+     * @param pathToFile to file
+     * @param rewrite    false\true to write or rewrite file
+     * @param text       text
      * @throws Exception
      */
-    public void writeToFile(String path, boolean rewrite, String text) throws Exception {
+    public void writeToFile(String pathToFile, boolean rewrite, String text) throws Exception {
 
 
-        try (FileOutputStream fos = new FileOutputStream(path, rewrite);
-        ) {
+        try (FileOutputStream fos = new FileOutputStream(pathToFile, rewrite);) {
 
             fos.write(text.getBytes(StandardCharsets.UTF_8));
-            debug.out(config.getPath());
         } catch (IIOException e) {
             System.out.println("Exception" + e);
         }
@@ -41,11 +38,7 @@ public class FileWork {
     public ArrayList<String> readFromFile(String path) throws Exception {
         ArrayList<String> listOfLines = new ArrayList<>();
         String line = "";
-        try (
-                FileInputStream fis = new FileInputStream(path);
-                InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
-                BufferedReader reader = new BufferedReader(isr);
-        ) {
+        try (FileInputStream fis = new FileInputStream(path); InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr);) {
             line = reader.readLine();
             while (line != null) {
                 listOfLines.add(line);

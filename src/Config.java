@@ -28,7 +28,6 @@ public class Config {
     }
 
     public WorkMod getWorkMod() {
-        System.out.println("debug" + workMod);
         return workMod;
     }
 }

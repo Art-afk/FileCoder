@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class ConfigBuilder {
 
-    public ConfigBuilder(){}
-
+    public ConfigBuilder() {
+    }
 
 
     public Config build(String[] args) throws Exception {
@@ -40,9 +40,6 @@ public class ConfigBuilder {
             }
         }
         Config config = new Config(debugMod, workMod, path, pathToOut);
-        System.out.println("Debug Mod: " + debugMod + " WorkMod: " + workMod + " Path: "
-                + path + " PathTo: " + pathToOut);
-
         return config;
     }
 }

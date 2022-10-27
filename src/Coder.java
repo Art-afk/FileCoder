@@ -5,14 +5,19 @@ public class Coder {
      * @return Encrypted String List Array
      * @throws Exception
      */
-private Debug debug;
-    public ArrayList<String> start(ArrayList<String> listLine) throws Exception {
-       //
+    private Debug debug;
+    private Config config;
+
+    public Coder(Config config) {
+        this.config = config;
+        this.debug = new Debug(config.getDebugMode());
+    }
+
+    public ArrayList<String> Start(ArrayList<String> listLine) throws Exception {
+        //
         ArrayList<String> encryptedStringList = new ArrayList<>();
 
-
-
-         debug.out("Coder get path: " + listLine);
+        debug.out("Coder get text to coding: " + listLine);
         for (String key : listLine) {
             char[] word;
             String assembledString = "";
