@@ -17,6 +17,8 @@ import java.util.ArrayList;
  * <p>
  * C:\Users\Zar\IdeaProjects\FileEncoderApp\Tests\stdCoder.txt
  * C:\Users\Zar\IdeaProjects\FileEncoderApp\Tests\stdDeCoder.txt
+ *
+ * -debug -decoder //Users//zar//IdeaProjects//FileCoder//Tests//stdCoderOUT.txt //Users//zar//IdeaProjects//FileCoder//Tests//stdDeCoderOUT.txt
  */
 
 
