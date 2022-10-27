@@ -13,7 +13,6 @@ public class LogicProcessorApp {
     public void start() throws Exception {
         FileProcessor fileProcessor = new FileProcessor();
         debug.out("Work mod before start: " + config.getWorkMod().toString() + " Debug Mod: " + config.getDebugMode() + " InputPath: " + config.getInputPath() + " PathToOut: " + config.getOutputPath());
-        String result = "";
         switch (config.getWorkMod()) {
             case CODER:
                 debug.out("Start CODER section");
@@ -21,7 +20,6 @@ public class LogicProcessorApp {
                 ArrayList<String> coderList = fileProcessor.readFromFile(config.getInputPath());
                 ArrayList<String> StringCoded = coder.start(coderList);
                 debug.out("Get encode text: " + StringCoded);
-                fileProcessor.writeToFile(config.getOutputPath(), false, ""); //clear file
                 for (String coderText : StringCoded) {
                     fileProcessor.writeToFile(config.getOutputPath(), true, coderText);
                 }
@@ -32,7 +30,6 @@ public class LogicProcessorApp {
                 ArrayList<String> deCoderList = fileProcessor.readFromFile(config.getInputPath());
                 ArrayList<String> stringDecoded = decoder.start(deCoderList);
                 debug.out("Get Decode text: " + stringDecoded);
-                fileProcessor.writeToFile(config.getOutputPath(), false, "");
                 for (String decoderText : stringDecoded) {
                     fileProcessor.writeToFile(config.getOutputPath(), true, decoderText);
                 }

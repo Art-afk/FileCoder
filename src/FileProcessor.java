@@ -4,9 +4,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class FileProcessor {
-
-
-
     /**
      * @param outputPath to file
      * @param rewrite    false\true to write or rewrite file
@@ -14,6 +11,7 @@ public class FileProcessor {
      * @throws Exception return error is can't write to file
      */
     public void writeToFile(String outputPath, boolean rewrite, String text) throws Exception {
+        ifTheFileIsNotCreatedWeCreateItIfExistsWeClearIt(outputPath);
         try (FileOutputStream fos = new FileOutputStream(outputPath, rewrite)) {
             fos.write(text.getBytes(StandardCharsets.UTF_8));
         } catch (IIOException e) {
@@ -29,7 +27,7 @@ public class FileProcessor {
     public ArrayList<String> readFromFile(String inputPath) throws Exception {
         ArrayList<String> listOfLines = new ArrayList<>();
         try (FileInputStream fis = new FileInputStream(inputPath); InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr)) {
-           String line = reader.readLine();
+            String line = reader.readLine();
             while (line != null) {
                 listOfLines.add(line);
                 line = reader.readLine();
@@ -40,5 +38,8 @@ public class FileProcessor {
             e.printStackTrace();
         }
         return listOfLines;
+    }
+    public void ifTheFileIsNotCreatedWeCreateItIfExistsWeClearIt(String path) throws Exception {
+        this.writeToFile(path, false, "");
     }
 }

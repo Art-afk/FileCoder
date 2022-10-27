@@ -7,10 +7,11 @@ public class Coder {
     public Coder(Config config) {
         this.debug = new Debug(config.getDebugMode());
     }
+
     /**
      * @return Encrypted String List Array
      */
-    public ArrayList<String> start(ArrayList<String> listLine){
+    public ArrayList<String> start(ArrayList<String> listLine) {
         //
         ArrayList<String> encryptedStringList = new ArrayList<>();
 
