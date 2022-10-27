@@ -1,8 +1,8 @@
 public class Config {
-    private DebugMode debugMode;
-    private String path;
-    private WorkMod workMod;
-    private String pathTo;
+    private final DebugMode debugMode;
+    private final String path;
+    private final WorkMod workMod;
+    private final String pathTo;
 
     public Config(DebugMode debugMode, WorkMod workMod, String path, String pathTo) {
         this.debugMode = debugMode;

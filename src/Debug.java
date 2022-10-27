@@ -2,7 +2,7 @@
  * Debug enable/disable
  */
 public class Debug {
-    private DebugMode debugMode;
+    private final DebugMode debugMode;
 
     public Debug(DebugMode debugMode) {
         this.debugMode = debugMode;

@@ -22,7 +22,7 @@ public class FileWork {
     public void writeToFile(String pathToFile, boolean rewrite, String text) throws Exception {
 
 
-        try (FileOutputStream fos = new FileOutputStream(pathToFile, rewrite);) {
+        try (FileOutputStream fos = new FileOutputStream(pathToFile, rewrite)) {
 
             fos.write(text.getBytes(StandardCharsets.UTF_8));
         } catch (IIOException e) {
@@ -38,7 +38,7 @@ public class FileWork {
     public ArrayList<String> readFromFile(String path) throws Exception {
         ArrayList<String> listOfLines = new ArrayList<>();
         String line = "";
-        try (FileInputStream fis = new FileInputStream(path); InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr);) {
+        try (FileInputStream fis = new FileInputStream(path); InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr)) {
             line = reader.readLine();
             while (line != null) {
                 listOfLines.add(line);

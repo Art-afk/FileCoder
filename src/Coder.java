@@ -5,8 +5,8 @@ public class Coder {
      * @return Encrypted String List Array
      * @throws Exception
      */
-    private Debug debug;
-    private Config config;
+    private final Debug debug;
+    private final Config config;
 
     public Coder(Config config) {
         this.config = config;
