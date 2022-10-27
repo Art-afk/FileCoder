@@ -6,8 +6,8 @@ public class ConfigBuilder {
     }
 
     public Config build(String[] args) throws Exception {
-        String pathToOut = null;
-        String path = null;
+        String outputPath = null;
+        String inputPath = null;
         DebugMode debugMod = DebugMode.DISABLE;
         WorkMod workMod = null;
         for (int i = 0; i <= args.length - 1; i++) {
@@ -19,20 +19,20 @@ public class ConfigBuilder {
                     debugMod = DebugMode.ENABLE;
                     break;
                 case "-coder":
-                    path = args[i + 1];
-                    pathToOut = args[i + 2];
+                    inputPath = args[i + 1];
+                    outputPath = args[i + 2];
                     workMod = WorkMod.CODER;
                     break;
                 case "-decoder":
-                    path = args[i + 1];
-                    pathToOut = args[i + 2];
+                    inputPath = args[i + 1];
+                    outputPath = args[i + 2];
                     workMod = WorkMod.DECODER;
                     break;
                 default:
                     System.out.println("something wrong");
             }
         }
-        Config config = new Config(debugMod, workMod, path, pathToOut);
+        Config config = new Config(debugMod, workMod, inputPath, outputPath);
         return config;
     }
 }

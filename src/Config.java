@@ -1,14 +1,14 @@
 public class Config {
     private final DebugMode debugMode;
-    private final String path;
+    private final String inputPath;
     private final WorkMod workMod;
-    private final String pathTo;
+    private final String outputPath;
 
-    public Config(DebugMode debugMode, WorkMod workMod, String path, String pathTo) {
+    public Config(DebugMode debugMode, WorkMod workMod, String inputPath, String outputPath) {
         this.debugMode = debugMode;
         this.workMod = workMod;
-        this.path = path;
-        this.pathTo = pathTo;
+        this.inputPath = inputPath;
+        this.outputPath = outputPath;
 
     }
 
@@ -17,14 +17,14 @@ public class Config {
         return debugMode;
     }
 
-    public String getPath() {
+    public String getInputPath() {
 
-        return path;
+        return inputPath;
     }
 
-    public String getPathTo() {
+    public String getOutputPath() {
 
-        return pathTo;
+        return outputPath;
     }
 
     public WorkMod getWorkMod() {

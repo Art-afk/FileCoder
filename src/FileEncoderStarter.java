@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * ��������� �� �����������/������������� ������. �� ���� �������� ����� �����. ���� ��� ����������� �����
  * ��������� ������������������ �������� a-z (������ �������). ���� ��� �������������
@@ -21,22 +19,17 @@ import java.util.ArrayList;
  * -debug -decoder //Users//zar//IdeaProjects//FileCoder//Tests//stdCoderOUT.txt //Users//zar//IdeaProjects//FileCoder//Tests//stdDeCoderOUT.txt
  */
 
-
-public class FileEncoderApp {
-
-
+public class FileEncoderStarter {
     public static void main(String[] args) throws Exception {
 
         ConfigBuilder configBuilder = new ConfigBuilder();
         if (args.length != 0) {
             Config config = configBuilder.build(args);
-            LogicProcessor logic = new LogicProcessor(config);
-            System.out.println(logic.Start());
+            LogicProcessorApp logic = new LogicProcessorApp(config);
+            logic.start();
         } else {
             System.out.println("*Error* Need Args to work");
             System.exit(1);
         }
-
-
     }//main
 }//class

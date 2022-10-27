@@ -3,27 +3,18 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class FileWork {
-    Debug debug;
-    Config config;
+public class FileProcessor {
 
-    public FileWork(Config config) {
-        this.config = config;
-        this.debug = new Debug(config.getDebugMode());
-    }
 
 
     /**
-     * @param pathToFile to file
+     * @param outputPath to file
      * @param rewrite    false\true to write or rewrite file
      * @param text       text
      * @throws Exception
      */
-    public void writeToFile(String pathToFile, boolean rewrite, String text) throws Exception {
-
-
-        try (FileOutputStream fos = new FileOutputStream(pathToFile, rewrite)) {
-
+    public void writeToFile(String outputPath, boolean rewrite, String text) throws Exception {
+        try (FileOutputStream fos = new FileOutputStream(outputPath, rewrite)) {
             fos.write(text.getBytes(StandardCharsets.UTF_8));
         } catch (IIOException e) {
             System.out.println("Exception" + e);
@@ -31,14 +22,14 @@ public class FileWork {
     }
 
     /**
-     * @param path to file to be read
+     * @param inputPath to file to be read
      * @return array read line by line reading
      * @throws Exception
      */
-    public ArrayList<String> readFromFile(String path) throws Exception {
+    public ArrayList<String> readFromFile(String inputPath) throws Exception {
         ArrayList<String> listOfLines = new ArrayList<>();
         String line = "";
-        try (FileInputStream fis = new FileInputStream(path); InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr)) {
+        try (FileInputStream fis = new FileInputStream(inputPath); InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr)) {
             line = reader.readLine();
             while (line != null) {
                 listOfLines.add(line);

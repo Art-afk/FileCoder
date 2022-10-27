@@ -5,15 +5,15 @@ public class Coder {
      * @return Encrypted String List Array
      * @throws Exception
      */
-    private final Debug debug;
-    private final Config config;
+    private Debug debug;
+    private Config config;
 
     public Coder(Config config) {
         this.config = config;
         this.debug = new Debug(config.getDebugMode());
     }
 
-    public ArrayList<String> Start(ArrayList<String> listLine) throws Exception {
+    public ArrayList<String> start(ArrayList<String> listLine) throws Exception {
         //
         ArrayList<String> encryptedStringList = new ArrayList<>();
 

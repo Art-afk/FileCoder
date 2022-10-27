@@ -14,7 +14,7 @@ public class Decoder {
      * @return decoded string array String
      * @throws Exception
      */
-    public ArrayList<String> Start(ArrayList<String> listLineFromFile) throws Exception {
+    public ArrayList<String> start(ArrayList<String> listLineFromFile) throws Exception {
         debug.out("Decoder get text to decoding: " + listLineFromFile);
         ArrayList<String> decryptedStringList = new ArrayList<>();
         for (String line : listLineFromFile) { // read line by line
