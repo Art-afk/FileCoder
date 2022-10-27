@@ -1,19 +1,16 @@
 import java.util.ArrayList;
 
 public class Coder {
-    /**
-     * @return Encrypted String List Array
-     * @throws Exception
-     */
-    private Debug debug;
-    private Config config;
+
+    private final Debug debug;
 
     public Coder(Config config) {
-        this.config = config;
         this.debug = new Debug(config.getDebugMode());
     }
-
-    public ArrayList<String> start(ArrayList<String> listLine) throws Exception {
+    /**
+     * @return Encrypted String List Array
+     */
+    public ArrayList<String> start(ArrayList<String> listLine){
         //
         ArrayList<String> encryptedStringList = new ArrayList<>();
 
@@ -28,9 +25,9 @@ public class Coder {
                 if (previousLetter == letter) {
                     countRep++;
                 } else {
-                    if (countRep == 1) assembledString = assembledString + letter;
+                    if (countRep == 1) assembledString += letter;
                     else {
-                        assembledString = assembledString + countRep + letter;
+                        assembledString += countRep + letter;
                         countRep = 1;
                     }
                     previousLetter = letter;
