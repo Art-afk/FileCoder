@@ -1,9 +1,9 @@
-public class LogicProcessorApp {
+public class FileEncoderApp {
     Debug debug;
     Config config;
 
 
-    public LogicProcessorApp(Config config) {
+    public FileEncoderApp(Config config) {
         this.config = config;
         this.debug = new Debug(config.getDebugMode());
     }
@@ -13,22 +13,20 @@ public class LogicProcessorApp {
         FileProcessor fileProcessor = new FileProcessor();
         debug.out("Work mod before start: " + config.getWorkMod().toString() + " Debug Mod: " + config.getDebugMode() + " InputPath: " + config.getInputPath() + " PathToOut: " + config.getOutputPath());
         switch (config.getWorkMod()) {
-            case CODER:
+            case ENCODE:
                 debug.out("Start CODER section");
-                String coderList = fileProcessor.readFromFile(config.getInputPath());
-                String StringCoded = stringEncoder.coder(coderList);
-                debug.out("Get encode text: " + StringCoded);
-                fileProcessor.ifTheFileIsNotCreatedWeCreateItIfExistsWeClearIt(config.getOutputPath());
-                fileProcessor.writeToFile(config.getOutputPath(), true, StringCoded);
+                String textForCoder = fileProcessor.readFromFile(config.getInputPath());
+                String textCoded = stringEncoder.encode(textForCoder);
+                debug.out("Get encode text: " + textCoded);
+                fileProcessor.writeToFile(config.getOutputPath(), true, textCoded);
 
                 break;
-            case DECODER:
+            case DECODE:
                 debug.out("Start DECODER section");
-                String deCoderList = fileProcessor.readFromFile(config.getInputPath());
-                String stringDecoded = stringEncoder.decoder(deCoderList);
-                debug.out("Get Decode text: " + stringDecoded);
-                fileProcessor.ifTheFileIsNotCreatedWeCreateItIfExistsWeClearIt(config.getOutputPath());
-                fileProcessor.writeToFile(config.getOutputPath(), true, stringDecoded);
+                String textForDecode = fileProcessor.readFromFile(config.getInputPath());
+                String textDecoded = stringEncoder.decode(textForDecode);
+                debug.out("Get Decoded text: " + textDecoded);
+                fileProcessor.writeToFile(config.getOutputPath(), true, textDecoded);
                 break;
             case HELP:
                 System.out.println("Specifies that you want to Encode or Decode: \n" + "Example:\n" + "./encoderApp -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt \n" + "./encoderApp -decode ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoderOUT.txt \n" + "You can Debug enable: \n" + "./encoderApp -debug -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt");

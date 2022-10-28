@@ -10,9 +10,15 @@ public class FileProcessor {
      * @throws Exception return error is can't write to file
      */
     public void writeToFile(String outputPath, boolean rewrite, String text) throws Exception {
+        try {
+            File myFile = new File(outputPath);
+            myFile.delete();
+        }catch (Exception e){
+            System.out.println("Exeption" + e.getMessage());
+        }
         try (FileOutputStream fos = new FileOutputStream(outputPath, rewrite)) {
             fos.write(text.getBytes(StandardCharsets.UTF_8));
-        } catch (IIOException e) {
+        } catch (Exception e) {
             System.out.println("Exception" + e);
         }
     }
@@ -23,11 +29,11 @@ public class FileProcessor {
      * @throws Exception return error if can't read from file
      */
     public String readFromFile(String inputPath) throws Exception {
-        String listOfLines = "";
+        String text = "";
         try (FileInputStream fis = new FileInputStream(inputPath); InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr)) {
             String line = reader.readLine();
             while (line != null) {
-                listOfLines = listOfLines + line + "\n";
+                text = text + line + "\n";
                 line = reader.readLine();
             }
         } catch (FileNotFoundException e) {
@@ -35,10 +41,8 @@ public class FileProcessor {
         } catch (IIOException e) {
             e.printStackTrace();
         }
-        return listOfLines;
+        return text;
     }
 
-    public void ifTheFileIsNotCreatedWeCreateItIfExistsWeClearIt(String path) throws Exception {
-        writeToFile(path, false, "");
-    }
+
 }

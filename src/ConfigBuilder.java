@@ -19,15 +19,21 @@ public class ConfigBuilder {
                 case "-coder":
                     inputPath = args[i + 1];
                     outputPath = args[i + 2];
-                    workMode = WorkMode.CODER;
+                    workMode = WorkMode.ENCODE;
                     break;
                 case "-decoder":
                     inputPath = args[i + 1];
                     outputPath = args[i + 2];
-                    workMode = WorkMode.DECODER;
+                    workMode = WorkMode.DECODE;
                     break;
                 default:
-                    System.out.println("something wrong");
+                    try {
+                        throw new RuntimeException();
+                    }catch (RuntimeException e){
+                        System.out.println(e.getMessage());
+                        System.out.println("Arg wrong");
+
+                    }
             }
         }
         Config config = new Config(debugMod, workMode, inputPath, outputPath);

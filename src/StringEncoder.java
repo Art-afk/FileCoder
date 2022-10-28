@@ -8,7 +8,7 @@ public class StringEncoder {
     /**
      * @return Encrypted String List Array
      */
-    public String coder(String listLine) {
+    public String encode(String listLine) {
         String encryptedString = "";
         debug.out("Coder get text to coding: " + listLine);
         char[] listLineChars = listLine.toCharArray();
@@ -36,7 +36,7 @@ public class StringEncoder {
      * @param stringFromFile encode text for decoding
      * @return decoded string array String
      */
-    public String decoder(String stringFromFile) {
+    public String decode(String stringFromFile) {
         debug.out("Decoder get text to decoding: " + stringFromFile);
         String decryptedStringFinish = "";
         String line = stringFromFile;

@@ -26,7 +26,7 @@ public class FileEncoderStarter {
         ConfigBuilder configBuilder = new ConfigBuilder();
         if (args.length != 0) {
             Config config = configBuilder.build(args);
-            LogicProcessorApp logic = new LogicProcessorApp(config);
+            FileEncoderApp logic = new FileEncoderApp(config);
             logic.start();
         } else {
             System.out.println("*Error* Need Args to work");
