@@ -8,6 +8,7 @@ public class ConfigBuilder {
         String inputPath = null;
         DebugMode debugMod = DebugMode.DISABLE;
         WorkMode workMode = null;
+        StringBuildMode strBuild = StringBuildMode.DISABLE;
         for (int i = 0; i <= args.length - 1; i++) {
             switch (args[i]) {
                 case "-help":
@@ -26,6 +27,12 @@ public class ConfigBuilder {
                     outputPath = args[i + 2];
                     workMode = WorkMode.DECODE;
                     break;
+                case "-strbuild":
+                    strBuild = StringBuildMode.ENABLE;
+                    break;
+                case "-strbuildcompare":
+                    strBuild = StringBuildMode.COMPARE;
+                    break;
                 default:
                     try {
                         throw new RuntimeException();
@@ -36,7 +43,7 @@ public class ConfigBuilder {
                     }
             }
         }
-        Config config = new Config(debugMod, workMode, inputPath, outputPath);
+        Config config = new Config(debugMod, workMode,strBuild, inputPath, outputPath);
         return config;
     }
 }

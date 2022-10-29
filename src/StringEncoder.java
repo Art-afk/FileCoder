@@ -6,31 +6,64 @@ public class StringEncoder {
     }
 
     /**
-     * @return Encrypted String List Array
+     * @return encoded text
+     * @stringFromFile put text for encode
      */
-    public String encode(String listLine) {
+    public String encode(String stringFromFile) {
         String encryptedString = "";
-        debug.out("Coder get text to coding: " + listLine);
-        char[] listLineChars = listLine.toCharArray();
+        debug.out("Coder get text to coding: " + stringFromFile);
+        char[] listLineChars = stringFromFile.toCharArray();
         String assembledString = "";
-        int countRep = 1;
+        int countRepeatWord = 1;
         char previousLetter = '\0';
         for (char letter : listLineChars) {
             if (previousLetter == letter) {
-                countRep++;
+                countRepeatWord++;
             } else {
-                if (countRep == 1) assembledString += letter;
+                if (countRepeatWord == 1) assembledString += letter;
                 else {
-                    assembledString += countRep + Character.toString(letter);
-                    countRep = 1;
+                    assembledString += countRepeatWord + Character.toString(letter);
+                    countRepeatWord = 1;
                 }
                 previousLetter = letter;
             }
+        }//for
+        if (countRepeatWord != 1) {
+            assembledString += countRepeatWord;
         }
         encryptedString = encryptedString + assembledString;
-
         return encryptedString;
     }//coder
+
+    /**
+     * @param stringFromFile text for coding
+     * @return encode string array String
+     */
+    public String encodeBuild(String stringFromFile) {
+        StringBuilder sbAssembledString = new StringBuilder();
+        StringBuilder sbEncryptedString = new StringBuilder();
+        debug.out("StringBuild get text to coding: " + stringFromFile);
+        char[] listLineChars = stringFromFile.toCharArray();
+        int countRepeatWord = 1;
+        char previousLetter = '\0';
+        for (char letter : listLineChars) {
+            if (previousLetter == letter) {
+                countRepeatWord++;
+            } else {
+                if (countRepeatWord == 1) sbAssembledString.append(letter);
+                else {
+                    sbAssembledString.append(countRepeatWord).append(Character.toString(letter));
+                    countRepeatWord = 1;
+                }
+                previousLetter = letter;
+            }
+        }//for
+        if (countRepeatWord != 1) {
+            sbAssembledString.append(countRepeatWord);
+        }
+        sbEncryptedString.append(sbEncryptedString).append(sbAssembledString);
+        return sbEncryptedString.toString();
+    }//codeBuilde
 
     /**
      * @param stringFromFile encode text for decoding
@@ -39,10 +72,9 @@ public class StringEncoder {
     public String decode(String stringFromFile) {
         debug.out("Decoder get text to decoding: " + stringFromFile);
         String decryptedStringFinish = "";
-        String line = stringFromFile;
         String decryptedString = "";
         char firstLetter = '\0';
-        for (char letter : line.toCharArray()) { //convert line to char
+        for (char letter : stringFromFile.toCharArray()) { //convert line to char
             if (Character.isDigit(letter)) {
                 decryptedString = decryptedString + Character.toString(firstLetter).repeat(Character.getNumericValue(letter) - 1);
             } else {
@@ -52,6 +84,29 @@ public class StringEncoder {
         }//for word
         decryptedStringFinish = decryptedStringFinish + decryptedString;
         return decryptedStringFinish;
-    }//start
+    }//decode
+
+    /**
+     * @param stringFromFile encode text for decoding
+     * @return decoded string array String
+     */
+    public String decodeBuild(String stringFromFile) {
+        debug.out("stringBuilder get text to decoding: " + stringFromFile);
+        StringBuilder sbDecryptedString = new StringBuilder();
+        StringBuilder sbDecryptedStringFinish = new StringBuilder();
+
+        char firstLetter = '\0';
+        for (char letter : stringFromFile.toCharArray()) { //convert line to char
+            if (Character.isDigit(letter)) {
+                sbDecryptedString.append(Character.toString(firstLetter).repeat(Character.getNumericValue(letter) - 1));
+            } else {
+                sbDecryptedString.append(letter);
+            }
+            firstLetter = letter;
+        }//for word
+        sbDecryptedStringFinish.append(sbDecryptedString);
+        return sbDecryptedStringFinish.toString();
+    }//decodeBuild
+
 
 }//StringEncoder

@@ -13,7 +13,7 @@ public class FileProcessor {
         try {
             File myFile = new File(outputPath);
             myFile.delete();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Exeption" + e.getMessage());
         }
         try (FileOutputStream fos = new FileOutputStream(outputPath, rewrite)) {
@@ -29,11 +29,12 @@ public class FileProcessor {
      * @throws Exception return error if can't read from file
      */
     public String readFromFile(String inputPath) throws Exception {
-        String text = "";
+        StringBuilder sbText = new StringBuilder();
+
         try (FileInputStream fis = new FileInputStream(inputPath); InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr)) {
             String line = reader.readLine();
             while (line != null) {
-                text = text + line + "\n";
+                sbText.append(line).append("\n");
                 line = reader.readLine();
             }
         } catch (FileNotFoundException e) {
@@ -41,7 +42,7 @@ public class FileProcessor {
         } catch (IIOException e) {
             e.printStackTrace();
         }
-        return text;
+        return sbText.toString();
     }
 
 
