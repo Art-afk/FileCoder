@@ -33,7 +33,7 @@ public class FileEncoderApp {
                 System.exit(0);
                 break;
             default:
-                System.out.println("For show help add args: -help");
+                throw new Exception("Args add wrong, please recheck");
         }
     }
 }
