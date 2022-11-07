@@ -16,7 +16,9 @@ public class FileEncoderApp {
             case ENCODE:
                 debug.out("Start CODER section");
                 String textForCoder = fileProcessor.readFromFile(config.getInputPath());
-                String textCoded = stringEncoder.encode(textForCoder);
+                if(config.getStrBuildMod() == StringBuildMode.DISABLE){
+                    String textCoded = stringEncoder.encode(textForCoder);
+                }   String textCoded = stringEncoder.encodeBuild(textForCoder);
                 debug.out("Get encode text: " + textCoded);
                 fileProcessor.writeToFile(config.getOutputPath(), true, textCoded);
 
@@ -24,7 +26,10 @@ public class FileEncoderApp {
             case DECODE:
                 debug.out("Start DECODER section");
                 String textForDecode = fileProcessor.readFromFile(config.getInputPath());
-                String textDecoded = stringEncoder.decode(textForDecode);
+                if(config.getStrBuildMod() == StringBuildMode.DISABLE){
+                    String textDecoded = stringEncoder.decode(textForDecode);
+                }String textDecoded = stringEncoder.decodeBuild(textForDecode);
+
                 debug.out("Get Decoded text: " + textDecoded);
                 fileProcessor.writeToFile(config.getOutputPath(), true, textDecoded);
                 break;
