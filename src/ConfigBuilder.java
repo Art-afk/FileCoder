@@ -10,6 +10,7 @@ public class ConfigBuilder {
         WorkMode workMode = null;
         StringBuildMode strBuild = StringBuildMode.DISABLE;
         for (int i = 0; i <= args.length - 1; i++) {
+            if (args[i].startsWith("-"))
             switch (args[i]) {
                 case "-help":
                     workMode = WorkMode.HELP;
@@ -34,14 +35,10 @@ public class ConfigBuilder {
                     strBuild = StringBuildMode.COMPARE;
                     break;
                 default:
-                    try {
-                        throw new RuntimeException();
-                    }catch (RuntimeException e){
-                        System.out.println(e.getMessage());
-                        System.out.println("Arg wrong");
+                    throw new IllegalArgumentException("Args add wrong, recheck please");
 
-                    }
             }
+
         }
         Config config = new Config(debugMod, workMode,strBuild, inputPath, outputPath);
         return config;
