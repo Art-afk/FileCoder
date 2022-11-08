@@ -10,8 +10,7 @@ public class ConfigBuilder {
         WorkMode workMode = null;
         StringBuildMode strBuild = StringBuildMode.DISABLE;
         for (int i = 0; i <= args.length - 1; i++) {
-            if (args[i].startsWith("-"))
-            switch (args[i]) {
+            if (args[i].startsWith("-")) switch (args[i]) {
                 case "-help":
                     workMode = WorkMode.HELP;
                     break;
@@ -40,7 +39,7 @@ public class ConfigBuilder {
             }
 
         }
-        Config config = new Config(debugMod, workMode,strBuild, inputPath, outputPath);
+        Config config = new Config(debugMod, workMode, strBuild, inputPath, outputPath);
         return config;
     }
 }

@@ -30,7 +30,8 @@ public class StringBuilderEncoder extends AbstractEncoder {
             sbAssembledString.append(countRepeatWord);
         }
         sbEncryptedString.append(sbEncryptedString).append(sbAssembledString);
-        return sbEncryptedString.toString();    }
+        return sbEncryptedString.toString();
+    }
 
     @Override
     public String decode(String stringFromFile) {

@@ -32,7 +32,8 @@ public class Config {
     public WorkMode getWorkMod() {
         return workMode;
     }
-    public StringBuildMode getStrBuildMod(){
+
+    public StringBuildMode getStrBuildMod() {
         return strBuild;
     }
 }

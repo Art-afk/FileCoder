@@ -25,16 +25,13 @@ public class FileEncoderApp {
                 String textCoded = null;
                 debug.out("Start CODER section");
                 String textForCoder = fileProcessor.readFromFile(config.getInputPath());
-
                 if (config.getStrBuildMod() == StringBuildMode.COMPARE) {
                     textCoded = compareMethod.compareEncodingMethod(textForCoder);
                 } else {
                     textCoded = stringEncoder.encode(textForCoder);
                 }
-
                 debug.out("Get encode text: " + textCoded);
                 fileProcessor.writeToFile(config.getOutputPath(), true, textCoded);
-
                 break;
             case DECODE:
                 String textDecoded = null;
@@ -45,8 +42,6 @@ public class FileEncoderApp {
                 } else {
                     textDecoded = stringEncoder.decode(textForDecode);
                 }
-
-
                 debug.out("Get Decoded text: " + textDecoded);
                 fileProcessor.writeToFile(config.getOutputPath(), true, textDecoded);
                 break;
