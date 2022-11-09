@@ -21,10 +21,10 @@ public class FileEncoderApp {
         debug.out("Work mod before start: " + config.getWorkMod().toString() + " Debug Mod: " + config.getDebugMode() + " InputPath: " + config.getInputPath() + " PathToOut: " + config.getOutputPath());
         switch (config.getWorkMod()) {
             case ENCODE:
-                startEncodeMethod();
+                runEncode();
                 break;
             case DECODE:
-                startDecodeMethod();
+                runDecode();
                 break;
             case HELP:
                 printHelp();
@@ -39,7 +39,7 @@ public class FileEncoderApp {
         System.out.println("Specifies that you want to Encode or Decode: \n" + "Example:\n" + "./encoderApp -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt \n" + "./encoderApp -decode ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoderOUT.txt \n" + "You can use StringBuild for work mod or use compare logic. Example:" + "./encoderApp -coder -strbuild ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt" + "./encoderApp -coder -strbuildcompare ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt" + "You can Debug enable: \n" + "./encoderApp -debug -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt");
     }
 
-    private void startDecodeMethod() throws Exception {
+    private void runDecode() throws Exception {
         String textDecoded;
         debug.out("Start DECODER section");
         String textForDecode = fileProcessor.readFromFile(config.getInputPath());
@@ -48,7 +48,7 @@ public class FileEncoderApp {
         fileProcessor.writeToFile(config.getOutputPath(), true, textDecoded);
     }
 
-    private void startEncodeMethod() throws Exception {
+    private void runEncode() throws Exception {
         String textCoded;
         debug.out("Start CODER section");
         String textForCoder = fileProcessor.readFromFile(config.getInputPath());
