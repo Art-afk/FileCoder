@@ -1,3 +1,3 @@
 public enum StringBuildMode {
-    ENABLE, DISABLE, COMPARE
+    STRING_BUILDER, STRING, COMPARE
 }

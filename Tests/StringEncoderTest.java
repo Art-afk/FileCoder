@@ -6,16 +6,16 @@ import static org.junit.Assert.*;
 public class StringEncoderTest {
     DebugMode debugMod = DebugMode.DISABLE;
     WorkMode workMode = WorkMode.ENCODE;
-    StringBuildMode strBuild = StringBuildMode.DISABLE;
+    StringBuildMode strBuild = StringBuildMode.STRING;
     String inputPath = null;
     String outputPath = null;
-    Config config = new Config(debugMod, workMode,strBuild, inputPath, outputPath);
+    Config config = new Config(debugMod, workMode, strBuild, inputPath, outputPath);
     StringEncoder stringEncoder = new StringEncoder(config);
 
 
     @Test
     public void encode() {
-        assertEquals("a3bdfr3z2",stringEncoder.encode("aaabdfrrrzz"));
+        assertEquals("a3bdfr3z2", stringEncoder.encode("aaabdfrrrzz"));
 
     }
 
@@ -29,7 +29,7 @@ public class StringEncoderTest {
     @Test
     @Ignore
     public void decode() {
-        assertEquals("aaabdfrrrzz",stringEncoder.decode("a3bdfr3z2"));
+        assertEquals("aaabdfrrrzz", stringEncoder.decode("a3bdfr3z2"));
 
     }
 

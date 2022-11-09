@@ -8,7 +8,7 @@ public class ConfigBuilder {
         String inputPath = null;
         DebugMode debugMod = DebugMode.DISABLE;
         WorkMode workMode = null;
-        StringBuildMode strBuild = StringBuildMode.DISABLE;
+        StringBuildMode strBuild = StringBuildMode.STRING;
         for (int i = 0; i <= args.length - 1; i++) {
             if (args[i].startsWith("-")) switch (args[i]) {
                 case "-help":
@@ -28,7 +28,7 @@ public class ConfigBuilder {
                     workMode = WorkMode.DECODE;
                     break;
                 case "-strbuild":
-                    strBuild = StringBuildMode.ENABLE;
+                    strBuild = StringBuildMode.STRING_BUILDER;
                     break;
                 case "-strbuildcompare":
                     strBuild = StringBuildMode.COMPARE;

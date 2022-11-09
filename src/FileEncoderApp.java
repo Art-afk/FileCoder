@@ -11,7 +11,7 @@ public class FileEncoderApp {
     public void start() throws Exception {
         AbstractEncoder stringEncoder = null;
         CompareMethod compareMethod = null;
-        if (config.getStrBuildMod() == StringBuildMode.DISABLE) {
+        if (config.getStrBuildMod() == StringBuildMode.STRING) {
             stringEncoder = new StringEncoder(config);
         } else if (config.getStrBuildMod() == StringBuildMode.COMPARE) {
             compareMethod = new CompareMethod(config);
@@ -46,11 +46,16 @@ public class FileEncoderApp {
                 fileProcessor.writeToFile(config.getOutputPath(), true, textDecoded);
                 break;
             case HELP:
-                System.out.println("Specifies that you want to Encode or Decode: \n" + "Example:\n" + "./encoderApp -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt \n" + "./encoderApp -decode ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoderOUT.txt \n" + "You can use StringBuild for work mod or use compare logic. Example:" + "./encoderApp -coder -strbuild ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt" + "./encoderApp -coder -strbuildcompare ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt" + "You can Debug enable: \n" + "./encoderApp -debug -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt");
+                printHelp();
                 System.exit(0);
                 break;
             default:
                 throw new IllegalArgumentException("Args add wrong, please recheck");
         }
+    }
+
+    private void printHelp(){
+     so
+        System.out.println("Specifies that you want to Encode or Decode: \n" + "Example:\n" + "./encoderApp -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt \n" + "./encoderApp -decode ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoderOUT.txt \n" + "You can use StringBuild for work mod or use compare logic. Example:" + "./encoderApp -coder -strbuild ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt" + "./encoderApp -coder -strbuildcompare ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt" + "You can Debug enable: \n" + "./encoderApp -debug -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt")
     }
 }
