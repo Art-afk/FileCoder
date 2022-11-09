@@ -10,32 +10,34 @@ public class ConfigBuilder {
         WorkMode workMode = null;
         StringBuildMode strBuild = StringBuildMode.STRING;
         for (int i = 0; i <= args.length - 1; i++) {
-            if (args[i].startsWith("-")) switch (args[i]) {
-                case "-help":
-                    workMode = WorkMode.HELP;
-                    break;
-                case "-debug":
-                    debugMod = DebugMode.ENABLE;
-                    break;
-                case "-coder":
-                    inputPath = args[i + 1];
-                    outputPath = args[i + 2];
-                    workMode = WorkMode.ENCODE;
-                    break;
-                case "-decoder":
-                    inputPath = args[i + 1];
-                    outputPath = args[i + 2];
-                    workMode = WorkMode.DECODE;
-                    break;
-                case "-strbuild":
-                    strBuild = StringBuildMode.STRING_BUILDER;
-                    break;
-                case "-strbuildcompare":
-                    strBuild = StringBuildMode.COMPARE;
-                    break;
-                default:
-                    throw new IllegalArgumentException("Args add wrong, recheck please");
+            if (args[i].startsWith("-")) {
+                switch (args[i]) {
+                    case "-help":
+                        workMode = WorkMode.HELP;
+                        break;
+                    case "-debug":
+                        debugMod = DebugMode.ENABLE;
+                        break;
+                    case "-coder":
+                        inputPath = args[i + 1];
+                        outputPath = args[i + 2];
+                        workMode = WorkMode.ENCODE;
+                        break;
+                    case "-decoder":
+                        inputPath = args[i + 1];
+                        outputPath = args[i + 2];
+                        workMode = WorkMode.DECODE;
+                        break;
+                    case "-strbuild":
+                        strBuild = StringBuildMode.STRING_BUILDER;
+                        break;
+                    case "-strbuildcompare":
+                        strBuild = StringBuildMode.COMPARE;
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Args add wrong, recheck please");
 
+                }
             }
 
         }

@@ -1,6 +1,6 @@
 public class ComparableStringBuilderEncoder extends AbstractEncoder {
-    private Debug debug;
-    private Config config;
+    private final Debug debug;
+    private final Config config;
     private AbstractEncoder stringEncoder;
     private AbstractEncoder stringBuilderEncoder;
 
@@ -15,8 +15,10 @@ public class ComparableStringBuilderEncoder extends AbstractEncoder {
     public String encode(String text) {
         String textOut;
         long start = System.currentTimeMillis();
+        debug.out("time start encode: " + start);
         String textOutString = stringEncoder.encode(text);
         long end = System.currentTimeMillis();
+        debug.out("time stop encode: " + end);
         float sec = (end - start) / 1000F;
         System.out.println("Without StringBuilder: " + sec + " seconds");
         long start2 = System.currentTimeMillis();
