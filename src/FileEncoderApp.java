@@ -18,7 +18,6 @@ public class FileEncoderApp {
         } else {
             stringEncoder = new StringBuilderEncoder(config);
         }
-        FileProcessor fileProcessor = new FileProcessor();
         debug.out("Work mod before start: " + config.getWorkMod().toString() + " Debug Mod: " + config.getDebugMode() + " InputPath: " + config.getInputPath() + " PathToOut: " + config.getOutputPath());
         switch (config.getWorkMod()) {
             case ENCODE:
@@ -41,7 +40,7 @@ public class FileEncoderApp {
     }
 
     private void startDecodeMethod() throws Exception {
-        String textDecoded = null;
+        String textDecoded;
         debug.out("Start DECODER section");
         String textForDecode = fileProcessor.readFromFile(config.getInputPath());
         textDecoded = stringEncoder.decode(textForDecode);
@@ -50,7 +49,7 @@ public class FileEncoderApp {
     }
 
     private void startEncodeMethod() throws Exception {
-        String textCoded = null;
+        String textCoded;
         debug.out("Start CODER section");
         String textForCoder = fileProcessor.readFromFile(config.getInputPath());
         textCoded = stringEncoder.encode(textForCoder);
