@@ -33,6 +33,7 @@ public class StringEncoder extends AbstractEncoder {
             assembledString += countRepeatWord;
         }
         encryptedString = encryptedString + assembledString;
+        debug.out("standart encoder out text: " + encryptedString);
         return encryptedString;
     }//coder
 
