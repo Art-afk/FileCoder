@@ -1,5 +1,5 @@
 public class StringEncoder extends AbstractEncoder {
-    private final Debug debug;
+    private Debug debug;
 
     public StringEncoder(Config config) {
         this.debug = new Debug(config.getDebugMode());

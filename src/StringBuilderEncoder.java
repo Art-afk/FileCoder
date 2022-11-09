@@ -1,6 +1,6 @@
 public class StringBuilderEncoder extends AbstractEncoder {
 
-    private final Debug debug;
+    private Debug debug;
 
     public StringBuilderEncoder(Config config) {
         this.debug = new Debug(config.getDebugMode());

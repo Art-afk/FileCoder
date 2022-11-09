@@ -1,6 +1,6 @@
 public class FileEncoderApp {
-    Debug debug;
-    Config config;
+    private Debug debug;
+    private Config config;
 
 
     public FileEncoderApp(Config config) {
@@ -10,11 +10,11 @@ public class FileEncoderApp {
 
     public void start() throws Exception {
         AbstractEncoder stringEncoder = null;
-        CompareMethod compareMethod = null;
+        ComparableStringBuilderEncoder comparableStringBuilderEncoder = null;
         if (config.getStrBuildMod() == StringBuildMode.STRING) {
             stringEncoder = new StringEncoder(config);
         } else if (config.getStrBuildMod() == StringBuildMode.COMPARE) {
-            compareMethod = new CompareMethod(config);
+            stringEncoder = new ComparableStringBuilderEncoder(config);
         } else {
             stringEncoder = new StringBuilderEncoder(config);
         }
@@ -25,11 +25,7 @@ public class FileEncoderApp {
                 String textCoded = null;
                 debug.out("Start CODER section");
                 String textForCoder = fileProcessor.readFromFile(config.getInputPath());
-                if (config.getStrBuildMod() == StringBuildMode.COMPARE) {
-                    textCoded = compareMethod.compareEncodingMethod(textForCoder);
-                } else {
-                    textCoded = stringEncoder.encode(textForCoder);
-                }
+                textCoded = stringEncoder.encode(textForCoder);
                 debug.out("Get encode text: " + textCoded);
                 fileProcessor.writeToFile(config.getOutputPath(), true, textCoded);
                 break;
@@ -37,11 +33,7 @@ public class FileEncoderApp {
                 String textDecoded = null;
                 debug.out("Start DECODER section");
                 String textForDecode = fileProcessor.readFromFile(config.getInputPath());
-                if (config.getStrBuildMod() == StringBuildMode.COMPARE) {
-                    textDecoded = compareMethod.compareDecodingMethod(textForDecode);
-                } else {
-                    textDecoded = stringEncoder.decode(textForDecode);
-                }
+                textDecoded = stringEncoder.decode(textForDecode);
                 debug.out("Get Decoded text: " + textDecoded);
                 fileProcessor.writeToFile(config.getOutputPath(), true, textDecoded);
                 break;
@@ -54,8 +46,7 @@ public class FileEncoderApp {
         }
     }
 
-    private void printHelp(){
-     so
-        System.out.println("Specifies that you want to Encode or Decode: \n" + "Example:\n" + "./encoderApp -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt \n" + "./encoderApp -decode ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoderOUT.txt \n" + "You can use StringBuild for work mod or use compare logic. Example:" + "./encoderApp -coder -strbuild ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt" + "./encoderApp -coder -strbuildcompare ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt" + "You can Debug enable: \n" + "./encoderApp -debug -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt")
+    private void printHelp() {
+        System.out.println("Specifies that you want to Encode or Decode: \n" + "Example:\n" + "./encoderApp -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt \n" + "./encoderApp -decode ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdDecoderOUT.txt \n" + "You can use StringBuild for work mod or use compare logic. Example:" + "./encoderApp -coder -strbuild ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt" + "./encoderApp -coder -strbuildcompare ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt" + "You can Debug enable: \n" + "./encoderApp -debug -coder ~\\IdeaProjects\\FileCoder\\Tests\\stdCoder.txt ~\\IdeaProjects\\FileCoder\\Tests\\stdCoderOUT.txt");
     }
 }
