@@ -1,15 +1,14 @@
 public class StringEncoder extends AbstractEncoder {
-    private Debug debug;
+    private final Debug debug;
 
     public StringEncoder(Config config) {
         this.debug = new Debug(config.getDebugMode());
     }
 
     /**
+     * @param stringFromFile text to encode
      * @return encoded text
-     * @stringFromFile put text for encode
      */
-
     public String encode(String stringFromFile) {
         String encryptedString = "";
         debug.out("Coder get text to coding: " + stringFromFile);
