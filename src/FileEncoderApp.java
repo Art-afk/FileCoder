@@ -9,8 +9,7 @@ public class FileEncoderApp {
     }
 
     public void start() throws Exception {
-        AbstractEncoder stringEncoder = null;
-        ComparableStringBuilderEncoder comparableStringBuilderEncoder = null;
+        AbstractEncoder stringEncoder;
         if (config.getStrBuildMod() == StringBuildMode.STRING) {
             stringEncoder = new StringEncoder(config);
         } else if (config.getStrBuildMod() == StringBuildMode.COMPARE) {
